@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="mSharedViewModel"
+            type="com.hfad.qaydlar.fragments.SharedViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,9 +21,9 @@
             android:id="@+id/recyclerView"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@color/moss_light"
             android:clipToPadding="false"
             android:paddingTop="8dp"
-            android:background="@color/moss_light"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -31,18 +35,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="40dp"
             android:clickable="true"
             android:focusable="true"
+            android:navigateToAddFragment="@{true}"
             android:src="@drawable/ic_add"
-            app:tint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/white" />
 
         <ImageView
             android:id="@+id/no_date_imageView"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:emptyDatabase="@{mSharedViewModel.emptyDatabase}"
             android:src="@drawable/ic_no_data"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@id/recyclerView"
@@ -57,9 +63,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:alpha="0.5"
+            android:emptyDatabase="@{mSharedViewModel.emptyDatabase}"
             android:text="@string/no_data"
             android:textSize="16sp"
             android:visibility="visible"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/recyclerView"
             app:layout_constraintTop_toBottomOf="@+id/no_date_imageView" />

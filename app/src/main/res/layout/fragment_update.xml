@@ -4,6 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="args"
+            type="com.hfad.qaydlar.fragments.update.UpdateFragmentArgs" />
 
     </data>
 
@@ -21,11 +24,12 @@
             android:background="@drawable/custom_input"
             android:ems="10"
             android:hint="@string/title"
+            android:text="@{args.currentItem.title}"
             android:inputType="textMultiLine"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:textColorHint="#757575"
-            android:maxLines="3"
+            app:maxLines="3"
             android:maxLength="50"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -61,6 +65,7 @@
                 android:entries="@array/priorities"
                 android:background="@android:color/transparent"
                 android:textAlignment="center"
+                android:parsePriorityToInt ="@{args.currentItem.priority}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -78,6 +83,7 @@
             android:ems="10"
             android:gravity="start|top"
             android:hint="@string/description"
+            android:text="@{args.currentItem.description}"
             android:inputType="textMultiLine"
             android:paddingStart="20dp"
             android:paddingTop="16dp"

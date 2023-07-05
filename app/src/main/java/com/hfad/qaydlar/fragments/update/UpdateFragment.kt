@@ -27,9 +27,10 @@ class UpdateFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentUpdateBinding.inflate(inflater, container, false)
+        binding.args = args
         setHasOptionsMenu(true)
 
-        showInfo()
+        binding.currentPrioritiesSpinner.onItemSelectedListener = mSharedViewModel.listener
         return binding.root
     }
 
@@ -84,10 +85,8 @@ class UpdateFragment : Fragment() {
         builder.create().show()
     }
 
-    private fun showInfo() {
-        binding.currentPrioritiesSpinner.onItemSelectedListener = mSharedViewModel.listener
-        binding.currentTitleEt.setText(args.currentItem.title)
-        binding.currentDescriptionEt.setText(args.currentItem.description)
-        binding.currentPrioritiesSpinner.setSelection(mSharedViewModel.parsePriorityToInt(args.currentItem.priority))
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

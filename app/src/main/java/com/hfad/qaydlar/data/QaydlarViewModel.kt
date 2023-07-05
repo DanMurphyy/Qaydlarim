@@ -7,38 +7,47 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class QaydlarViewModel(application: Application):AndroidViewModel(application) {
+class QaydlarViewModel(application: Application) : AndroidViewModel(application) {
 
     private val qaydlarDao = QaydlarDatabase.getDatabase(application).qaydlarDao()
-    private val repository : QaydlarRepository
+    private val repository: QaydlarRepository
 
     val getAllData: LiveData<List<QaydlarData>>
+    val sortByHighPriority: LiveData<List<QaydlarData>>
+    val sortByLowPriority: LiveData<List<QaydlarData>>
 
     init {
         repository = QaydlarRepository(qaydlarDao)
         getAllData = repository.getAllData
+        sortByHighPriority = repository.sortByHighPriority
+        sortByLowPriority = repository.sortByLowPriority
     }
-    fun insertData(qaydlarData: QaydlarData){
-        viewModelScope.launch(Dispatchers.IO){
+
+    fun insertData(qaydlarData: QaydlarData) {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.insertData(qaydlarData)
         }
     }
 
-    fun updateData(qaydlarData: QaydlarData){
-        viewModelScope.launch(Dispatchers.IO){
+    fun updateData(qaydlarData: QaydlarData) {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.updateData(qaydlarData)
         }
     }
 
-    fun deleteItem(qaydlarData: QaydlarData){
-        viewModelScope.launch(Dispatchers.IO){
+    fun deleteItem(qaydlarData: QaydlarData) {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.deleteItem(qaydlarData)
         }
     }
 
-    fun deleteAll(){
-        viewModelScope.launch(Dispatchers.IO){
+    fun deleteAll() {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.deleteAll()
         }
+    }
+
+    fun searchDatabase(searchQuery: String): LiveData<List<QaydlarData>> {
+        return repository.searchDatabase(searchQuery)
     }
 }

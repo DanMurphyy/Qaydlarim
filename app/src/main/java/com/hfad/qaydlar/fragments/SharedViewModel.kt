@@ -14,7 +14,7 @@ import com.hfad.qaydlar.data.QaydlarData
 
 class SharedViewModel(application: Application) : AndroidViewModel(application) {
 
-    val emptyDatabase: MutableLiveData<Boolean> = MutableLiveData(true)
+    val emptyDatabase: MutableLiveData<Boolean> = MutableLiveData(false)
 
     fun checkIfDatabaseEmpty(qaydlarDatabase: List<QaydlarData>) {
         emptyDatabase.value = qaydlarDatabase.isEmpty()
@@ -56,14 +56,6 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
                 Priority.LOW
             }
             else -> Priority.LOW
-        }
-    }
-
-    fun parsePriorityToInt(priority: Priority): Int {
-        return when (priority) {
-            Priority.HIGH -> 0
-            Priority.MEDIUM -> 1
-            Priority.LOW -> 2
         }
     }
 }
