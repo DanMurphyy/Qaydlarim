@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="24dp"
+        android:background="@color/moss_light"
+        tools:context=".fragments.add.AddFragment">
+
+        <EditText
+            android:id="@+id/title_et"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:background="@drawable/custom_input"
+            android:ems="10"
+            android:hint="@string/title"
+            android:inputType="textMultiLine"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:textColorHint="#757575"
+            android:maxLines="3"
+            android:maxLength="50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:autofillHints="" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/custom_input"
+            app:layout_constraintBottom_toTopOf="@+id/description_et"
+            app:layout_constraintEnd_toEndOf="@+id/description_et"
+            app:layout_constraintStart_toEndOf="@+id/title_et"
+            app:layout_constraintTop_toTopOf="@+id/title_et">
+
+            <TextView
+                android:id="@+id/priority_tv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="@string/priority_names"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/priorities_spinner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/priorities_spinner"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:entries="@array/priorities"
+                android:background="@android:color/transparent"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/priority_tv" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <EditText
+            android:id="@+id/description_et"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:autofillHints=""
+            android:background="@drawable/custom_input"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/description"
+            android:inputType="textMultiLine"
+            android:paddingStart="20dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="20dp"
+            android:textColorHint="#757575"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_et" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

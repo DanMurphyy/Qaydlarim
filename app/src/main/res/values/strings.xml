@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Qaydlar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search">Qidirmoq</string>
+    <string name="add">Qo\'shmoq</string>
+    <string name="sort_by">Saralash turi</string>
+    <string name="priority_high">Yuqori</string>
+    <string name="priority_low">Past</string>
+    <string name="delete_all">Hammasini o\'chirish</string>
+    <string name="title">Sarlavha</string>
+    <string name="description">Tavsifi</string>
+    <string name="priority_names">Muhimlik darajasi</string>
+    <string name="no_data">Qaydlar mavjud emas</string>
+
+    <string-array name="priorities">
+        <item>Yuqori</item>
+        <item>O\'rta</item>
+        <item>Past</item>
+    </string-array>
+</resources>
