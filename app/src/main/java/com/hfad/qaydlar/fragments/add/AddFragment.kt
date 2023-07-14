@@ -6,6 +6,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import com.hfad.qaydlar.R
 import com.hfad.qaydlar.data.QaydlarData
 import com.hfad.qaydlar.data.QaydlarViewModel
@@ -27,6 +29,10 @@ class AddFragment : Fragment() {
         _binding = FragmentAddBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
         binding.prioritiesSpinner.onItemSelectedListener = mSharedViewModel.listener
+
+        MobileAds.initialize(requireContext())
+        val adRequest = AdRequest.Builder().build()
+        binding.adView2.loadAd(adRequest)
 
         return binding.root
     }

@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import com.hfad.qaydlar.R
 import com.hfad.qaydlar.data.QaydlarData
 import com.hfad.qaydlar.data.QaydlarViewModel
@@ -31,6 +33,10 @@ class UpdateFragment : Fragment() {
         setHasOptionsMenu(true)
 
         binding.currentPrioritiesSpinner.onItemSelectedListener = mSharedViewModel.listener
+
+        MobileAds.initialize(requireContext())
+        val adRequest = AdRequest.Builder().build()
+        binding.adView3.loadAd(adRequest)
         return binding.root
     }
 

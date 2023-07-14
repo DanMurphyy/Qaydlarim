@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import com.google.android.material.snackbar.Snackbar
 import com.hfad.qaydlar.R
 import com.hfad.qaydlar.data.QaydlarData
@@ -45,6 +47,10 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
             adapter.setData(data)
         })
         hideKeyboard(requireActivity())
+        MobileAds.initialize(requireContext())
+        val adRequest = AdRequest.Builder().build()
+        binding.adview1.loadAd(adRequest)
+
         return binding.root
     }
 
