@@ -14,8 +14,8 @@ android {
         applicationId "com.hfad.qaydlar"
         minSdk 21
         targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -76,5 +76,5 @@ dependencies {
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
 
     implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
-    implementation'com.google.android.gms:play-services-ads-base:22.2.0'
+    implementation'com.google.android.gms:play-services-ads-base:20.3.0'
 }
