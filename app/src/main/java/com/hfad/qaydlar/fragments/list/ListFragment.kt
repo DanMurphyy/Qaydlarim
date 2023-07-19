@@ -2,14 +2,13 @@ package com.hfad.qaydlar.fragments.list
 
 import android.os.Bundle
 import android.view.*
-import androidx.appcompat.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.gms.ads.AdRequest
@@ -40,6 +39,10 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         binding.lifecycleOwner = this
         binding.mSharedViewModel = mSharedViewModel
 
+        MobileAds.initialize(requireContext())
+        val adRequest = AdRequest.Builder().build()
+        binding.adview1.loadAd(adRequest)
+
         setUpRecyclerView()
 
         mQaydlarViewModel.getAllData.observe(viewLifecycleOwner, Observer { data ->
@@ -47,9 +50,6 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
             adapter.setData(data)
         })
         hideKeyboard(requireActivity())
-        MobileAds.initialize(requireContext())
-        val adRequest = AdRequest.Builder().build()
-        binding.adview1.loadAd(adRequest)
 
         return binding.root
     }
@@ -57,7 +57,8 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
     private fun setUpRecyclerView() {
         val recyclerView = binding.recyclerView
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+        recyclerView.layoutManager =
+            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         recyclerView.itemAnimator = LandingAnimator().apply {
             addDuration = 200
         }
@@ -92,8 +93,8 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.list_fragment_menu, menu)
-        val search:MenuItem = menu.findItem(R.id.menu_search)
-        val searchView:SearchView? =search.actionView as? SearchView
+        val search: MenuItem = menu.findItem(R.id.menu_search)
+        val searchView: SearchView? = search.actionView as? SearchView
         searchView?.isSubmitButtonEnabled = true
         searchView?.setOnQueryTextListener(this)
     }
@@ -101,8 +102,10 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_delete_all -> confirmRemoval()
-            R.id.menu_priority_high -> mQaydlarViewModel.sortByHighPriority.observe(this, Observer { adapter.setData(it) })
-            R.id.menu_priority_low -> mQaydlarViewModel.sortByLowPriority.observe(this, Observer { adapter.setData(it) })
+            R.id.menu_priority_high -> mQaydlarViewModel.sortByHighPriority.observe(this,
+                Observer { adapter.setData(it) })
+            R.id.menu_priority_low -> mQaydlarViewModel.sortByLowPriority.observe(this,
+                Observer { adapter.setData(it) })
         }
         return super.onOptionsItemSelected(item)
     }

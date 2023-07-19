@@ -37,6 +37,7 @@ class UpdateFragment : Fragment() {
         MobileAds.initialize(requireContext())
         val adRequest = AdRequest.Builder().build()
         binding.adView3.loadAd(adRequest)
+
         return binding.root
     }
 
