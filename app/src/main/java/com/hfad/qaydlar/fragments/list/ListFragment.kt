@@ -39,7 +39,6 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         binding.lifecycleOwner = this
         binding.mSharedViewModel = mSharedViewModel
 
-        MobileAds.initialize(requireContext())
         val adRequest = AdRequest.Builder().build()
         binding.adview1.loadAd(adRequest)
 

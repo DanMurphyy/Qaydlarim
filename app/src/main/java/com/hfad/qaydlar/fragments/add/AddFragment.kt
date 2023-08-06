@@ -30,7 +30,6 @@ class AddFragment : Fragment() {
         setHasOptionsMenu(true)
         binding.prioritiesSpinner.onItemSelectedListener = mSharedViewModel.listener
 
-        MobileAds.initialize(requireContext())
         val adRequest = AdRequest.Builder().build()
         binding.adView2.loadAd(adRequest)
 
